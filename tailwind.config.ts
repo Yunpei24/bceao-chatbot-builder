@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        // Couleurs BCEAO
+        bceao: {
+          primary: "#003366",
+          secondary: "#D4AF37",
+          light: "#F5F7FA",
+          text: "#4A5568",
+          accent: "#1A73E8",
+        }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
