@@ -63,13 +63,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-        // Couleurs BCEAO
+        // Couleurs BCEAO ajustées selon l'image
         bceao: {
-          primary: "#003366",
-          secondary: "#D4AF37",
-          light: "#F5F7FA",
-          text: "#4A5568",
-          accent: "#1A73E8",
+          primary: "#623B13", // Marron foncé de l'image
+          secondary: "#D4A963", // Or/ambre de l'image
+          light: "#F5F0E6", // Version claire dérivée
+          text: "#4A5568", // Texte standard
+          accent: "#85582F", // Accent marron moyen
         }
 			},
 			borderRadius: {
