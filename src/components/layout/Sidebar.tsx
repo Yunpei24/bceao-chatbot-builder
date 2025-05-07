@@ -109,9 +109,9 @@ const Sidebar = () => {
           <div className="flex items-center justify-between p-4 border-b border-sidebar-border">
             <div className="flex items-center gap-2">
               <img 
-                src="/placeholder.svg" 
+                src="/lovable-uploads/c8aeb1b6-5733-40b8-8aa3-56497dca15ba.png" 
                 alt="BCEAO Logo" 
-                className="h-8 w-8" 
+                className="h-8 w-auto" 
               />
               <h1 className="text-xl font-bold text-white">BCEAO Chat</h1>
             </div>

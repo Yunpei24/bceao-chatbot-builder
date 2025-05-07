@@ -15,6 +15,13 @@ const Layout = ({ children, className }: LayoutProps) => {
       <Sidebar />
       <main className={cn("flex-1 overflow-auto p-6 relative z-10", className)}>
         <div className="container mx-auto max-w-7xl">
+          <div className="flex justify-end mb-6">
+            <img 
+              src="/lovable-uploads/c8aeb1b6-5733-40b8-8aa3-56497dca15ba.png" 
+              alt="BCEAO Logo" 
+              className="h-12 w-auto" 
+            />
+          </div>
           {children}
         </div>
       </main>
