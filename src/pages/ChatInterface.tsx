@@ -12,10 +12,11 @@ import {
   FileText, 
   Clock, 
   Download, 
-  Copy
+  Copy,
+  Bot
 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import { Avatar } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface Message {
@@ -144,6 +145,21 @@ const ChatInterface = () => {
     }, 1500);
   };
 
+  const handleNewConversation = () => {
+    setMessages([
+      {
+        id: 'new-1',
+        content: "Bonjour, je suis votre assistant BCEAO. Comment puis-je vous aider aujourd'hui ?",
+        sender: 'bot',
+        timestamp: new Date(),
+      }
+    ]);
+    toast({
+      title: "Nouvelle conversation",
+      description: "Une nouvelle conversation a été démarrée",
+    });
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSendMessage();
@@ -174,7 +190,12 @@ const ChatInterface = () => {
                       <TabsTrigger value="conversation">Conversation</TabsTrigger>
                       <TabsTrigger value="history">Historique</TabsTrigger>
                     </TabsList>
-                    <Button variant="ghost" size="sm" className="text-xs flex gap-1">
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="text-xs flex gap-1"
+                      onClick={handleNewConversation}
+                    >
                       <Clock className="h-3.5 w-3.5" />
                       Nouvelle conversation
                     </Button>
@@ -186,9 +207,9 @@ const ChatInterface = () => {
                         <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                           <div className={`max-w-3xl flex gap-3 ${message.sender === 'user' ? 'flex-row-reverse' : ''}`}>
                             <Avatar className={`h-8 w-8 ${message.sender === 'user' ? 'bg-bceao-primary' : 'bg-bceao-light'}`}>
-                              <div className={message.sender === 'user' ? 'text-white' : 'text-bceao-primary'}>
+                              <AvatarFallback className={message.sender === 'user' ? 'text-white' : 'text-bceao-primary'}>
                                 {message.sender === 'user' ? 'U' : 'B'}
-                              </div>
+                              </AvatarFallback>
                             </Avatar>
                             <div>
                               <div 
@@ -284,7 +305,7 @@ const ChatInterface = () => {
             <Card className="bceao-card">
               <CardContent className="p-4">
                 <h3 className="font-medium text-sm mb-3">Suggestions</h3>
-                <div className="space-y-2">
+                <div className="space-y-2 max-h-[300px] overflow-y-auto">
                   {[
                     "Quelle est la situation de l'inflation dans l'UEMOA ?",
                     "Montrez-moi le dernier rapport trimestriel",
@@ -293,7 +314,7 @@ const ChatInterface = () => {
                     <Button 
                       key={i}
                       variant="outline" 
-                      className="w-full justify-start text-left h-auto p-3 text-sm font-normal"
+                      className="w-full justify-start text-left h-auto p-3 text-sm font-normal whitespace-normal"
                       onClick={() => {
                         setInput(suggestion);
                         setTimeout(() => handleSendMessage(), 100);
